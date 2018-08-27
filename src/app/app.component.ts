@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <app-star-wars-home></app-star-wars-home>
+  `,
 })
 export class AppComponent {
   title = 'sw-assignment';
