@@ -1,7 +1,6 @@
-import { ItemDetail } from './ItemDetail';
+import { NonFilmDetail } from './ItemDetail';
 
-export interface Starship extends ItemDetail {
-  name: string;
+export interface Starship extends NonFilmDetail {
   max_atmosphering_speed: string;
   starship_class: string;
   MGLT: string;

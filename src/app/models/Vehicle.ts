@@ -1,7 +1,6 @@
-import { ItemDetail } from './ItemDetail';
+import { NonFilmDetail } from './ItemDetail';
 
-export interface Vehicle extends ItemDetail {
-  name: string;
+export interface Vehicle extends NonFilmDetail {
   vehicle_class: string;
   max_atmosphering_speed: string;
   manufacturer: string;
@@ -13,5 +12,5 @@ export interface Vehicle extends ItemDetail {
   cost_in_credits: string;
   length: string;
   films: string[];
-  passengers: string[];
+  passengers: string;
 }

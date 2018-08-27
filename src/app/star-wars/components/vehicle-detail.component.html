@@ -1,0 +1,113 @@
+<mat-card>
+  <mat-card-title>
+    Name
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.name}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Maximum Atmospheric Speed
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.max_atmosphering_speed | number: '.'}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Manufacturer
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.manufacturer}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Cargo Capacity
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.cargo_capacity | number: '.'}}kg
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Consumables
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.consumables | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Model
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.model | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Crew
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.crew | number: '.'}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Cost
+  </mat-card-title>
+  <mat-card-content>
+    <span *ngIf="item?.cost_in_credits === 'unknown'">{{item?.cost_in_credits | titlecase}}</span>
+    <span *ngIf="item?.cost_in_credits !== 'unknown'">{{item?.cost_in_credits | number: '.'}} credits</span>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Length
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.length | number: '.'}}m
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Maximum Passengers
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.passengers | number: '.'}}
+  </mat-card-content>
+</mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Notable Pilots
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="pilots?.length == 0">This vehicle has no notable pilots.</p>
+    <a *ngFor="let p of pilots" href="{{p.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{p.name}}</mat-card-title>
+          <img mat-card-avatar [src]="p.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Films
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="films?.length == 0">This vehicle has no related films.</p>
+    <a *ngFor="let f of films" href="{{f.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{f.name}}</mat-card-title>
+          <img mat-card-avatar [src]="f.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>

@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-title>
+    Classification
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.classification | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Hair Color(s)
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.hair_colors | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Homeworld
+  </mat-card-title>
+  <a href="{{homeworld?.url}}">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{homeworld?.name}}</mat-card-title>
+        <img mat-card-avatar [src]="homeworld?.imageUrl">
+      </mat-card-header>
+    </mat-card>
+  </a>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Average Height
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.average_height}}cm
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Average Lifespan
+  </mat-card-title>
+  <mat-card-content>
+    <span *ngIf="item?.average_lifespan === 'unknown'">{{item?.average_lifespan | titlecase}}</span>
+    <span *ngIf="item?.average_lifespan !== 'unknown'">{{item?.average_lifespan | number : '.'}} years</span>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Designation
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.designation | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Skin Color(s)
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.skin_colors | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Eye Color(s)
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.eye_colors | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Language
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.language | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Notable Characters
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="people?.length == 0">This species has no characters.</p>
+    <a *ngFor="let p of people" href="{{p.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{p.name}}</mat-card-title>
+          <img mat-card-avatar [src]="p.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Films
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="films?.length == 0">This species has no related films.</p>
+    <a *ngFor="let f of films" href="{{f.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{f.name}}</mat-card-title>
+          <img mat-card-avatar [src]="f.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>

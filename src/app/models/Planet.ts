@@ -1,7 +1,6 @@
-import { ItemDetail } from './ItemDetail';
+import { NonFilmDetail } from './ItemDetail';
 
-export interface Planet extends ItemDetail {
-  name: string;
+export interface Planet extends NonFilmDetail {
   rotation_period: string;
   diameter: string;
   population: string;

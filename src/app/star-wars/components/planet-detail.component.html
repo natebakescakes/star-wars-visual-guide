@@ -1,0 +1,105 @@
+<mat-card>
+  <mat-card-title>
+    Name
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.name}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Rotation Period
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.rotation_period}} days
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Diameter
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.diameter | number: '.'}}km
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Population
+  </mat-card-title>
+  <mat-card-content>
+    <span *ngIf="item?.population === 'unknown'">{{item?.population | titlecase}}</span>
+    <span *ngIf="item?.population !== 'unknown'">{{item?.population | number: '.'}}</span>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Gravity
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.gravity | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Surface Water
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.surface_water}}%
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Orbital Period
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.orbital_period}} days
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Terrain
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.terrain | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Climate
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.climate | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Residents
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="residents?.length == 0">This planet has no notable residents</p>
+    <a *ngFor="let r of residents" href="{{r.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{r.name}}</mat-card-title>
+          <img mat-card-avatar [src]="r.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Films
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="films?.length == 0">This planet has no related films</p>
+    <a *ngFor="let f of films" href="{{f.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{f.name}}</mat-card-title>
+          <img mat-card-avatar [src]="f.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>

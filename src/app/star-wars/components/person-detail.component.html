@@ -1,0 +1,142 @@
+<mat-card>
+  <mat-card-title>
+    Name
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.name}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Height
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.height}}cm
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Skin Color
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.skin_color | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Eye Color
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.eye_color | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Homeworld
+  </mat-card-title>
+  <a href="{{homeworld?.url}}">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{homeworld?.name}}</mat-card-title>
+        <img mat-card-avatar [src]="homeworld?.imageUrl">
+      </mat-card-header>
+    </mat-card>
+  </a>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Birth Year
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.birth_year | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Gender
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.gender | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Hair Color
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.hair_color | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Weight
+  </mat-card-title>
+  <mat-card-content>
+    <span *ngIf="item?.mass === 'unknown'">{{item?.mass | titlecase}}</span>
+    <span *ngIf="item?.mass !== 'unknown'">{{item?.mass | number : '.'}}kg</span>
+  </mat-card-content>
+</mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Species
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="species?.length == 0">This character has no related species</p>
+    <a *ngFor="let s of species" href="{{s.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{s.name}}</mat-card-title>
+          <img mat-card-avatar [src]="s.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Vehicles
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="vehicles?.length == 0">This character has no related vehicles</p>
+    <a *ngFor="let v of vehicles" href="{{v.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{v.name}}</mat-card-title>
+          <img mat-card-avatar [src]="v.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Starships
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="starships?.length == 0">This character has no related starships</p>
+    <a *ngFor="let s of starships" href="{{s.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{s.name}}</mat-card-title>
+          <img mat-card-avatar [src]="s.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Films
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="films?.length == 0">This character has no related films</p>
+    <a *ngFor="let f of films" href="{{f.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{f.name}}</mat-card-title>
+          <img mat-card-avatar [src]="f.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>

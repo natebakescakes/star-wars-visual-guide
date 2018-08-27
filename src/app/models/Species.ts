@@ -1,4 +1,6 @@
-export interface Species {
+import { NonFilmDetail } from './ItemDetail';
+
+export interface Species extends NonFilmDetail {
   classification: string;
   people: string[];
   hair_colors: string[];

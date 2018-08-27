@@ -1,7 +1,6 @@
-import { ItemDetail } from './ItemDetail';
+import { NonFilmDetail } from './ItemDetail';
 
-export interface Person extends ItemDetail {
-  name: string;
+export interface Person extends NonFilmDetail {
   species: string[];
   vehicles: string[];
   height: string;

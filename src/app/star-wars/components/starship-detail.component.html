@@ -1,0 +1,129 @@
+<mat-card>
+  <mat-card-title>
+    Name
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.name | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Maximum Atmospheric Speed
+  </mat-card-title>
+  <mat-card-content>
+    <span *ngIf="item?.max_atmosphering_speed === 'n/a'">{{item?.max_atmosphering_speed}}</span>
+    <span>{{item?.max_atmosphering_speed | number: '.'}}</span>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Starship Class
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.starship_class | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    MGLT
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.MGLT}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Manufacturer
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.manufacturer | titlecase}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Consumables
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.consumables}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Model
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.model}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Crew
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.crew | number: '.'}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Cost
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.cost_in_credits | number: '.'}} credits
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Length
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.length | number: '.' }}m
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Hyperdrive Rating
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.hyperdrive_rating}}
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Passengers
+  </mat-card-title>
+  <mat-card-content>
+    {{item?.passengers | number: '.'}}
+  </mat-card-content>
+</mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Notable Pilots
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="pilots?.length == 0">This starship has no notable pilots.</p>
+    <a *ngFor="let p of pilots" href="{{p.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{p.name}}</mat-card-title>
+          <img mat-card-avatar [src]="p.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Related Films
+  </mat-expansion-panel-header>
+  <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
+    <p *ngIf="films?.length == 0">This starship has no related films.</p>
+    <a *ngFor="let f of films" href="{{f.url}}">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{f.name}}</mat-card-title>
+          <img mat-card-avatar [src]="f.imageUrl">
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </mat-card-content>
+</mat-expansion-panel>

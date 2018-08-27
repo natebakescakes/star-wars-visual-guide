@@ -10,7 +10,7 @@ import { SwapiService } from '../../services/swapi.service';
   <mat-toolbar color="primary">
     <a mat-icon-button href="/"><mat-icon>chevron_left</mat-icon></a>
     <span>&nbsp;</span>
-    Star Wars Guide
+    {{category | titlecase}}
   </mat-toolbar>
   <div class="container" fxLayout="column wrap" fxLayoutGap="10px">
     <a href="{{showLink(i)}}" *ngFor="let i of listResult?.results">

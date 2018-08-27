@@ -3,3 +3,7 @@ export interface ItemDetail {
   url: string;
   created: string;
 }
+
+export interface NonFilmDetail extends ItemDetail {
+  name: string;
+}
