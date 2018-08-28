@@ -4,5 +4,5 @@ export interface ListResult {
   count: string;
   next: string;
   previous: string;
-  results: any[];
+  results: ItemDetail[];
 }

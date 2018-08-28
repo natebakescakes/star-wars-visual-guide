@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const MODULES = [
   MatToolbarModule,
@@ -11,11 +12,12 @@ const MODULES = [
   MatIconModule,
   MatCardModule,
   MatExpansionModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
   imports: [MODULES],
   exports: [MODULES],
-  declarations: [],
+  declarations: []
 })
 export class MaterialModule {}
