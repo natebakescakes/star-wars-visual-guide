@@ -28,7 +28,8 @@
     MGLT
   </mat-card-title>
   <mat-card-content>
-    {{item?.MGLT}}
+    <span *ngIf="item?.MGLT === 'unknown'">{{item?.MGLT | titlecase}}</span>
+    <span>{{item?.MGLT | number: '.'}}</span>
   </mat-card-content>
 </mat-card>
 <mat-card>
