@@ -15,13 +15,16 @@ import { SwapiService } from '../../services/swapi.service';
   <div class="container" fxLayout="column wrap" fxLayoutGap="10px">
     <a href="{{showLink(i)}}" *ngFor="let i of listResult?.results">
       <mat-card>
-        <mat-card-title>
-          {{showName(i)}}
-        </mat-card-title>
+        <mat-card-header>
+          <mat-card-title>
+            {{showName(i)}}
+          </mat-card-title>
+          <img mat-card-avatar [src]="showImageUrl(i)">
+        </mat-card-header>
       </mat-card>
     </a>
   </div>
-  `,
+  `
 })
 export class ItemListComponent implements OnInit {
   listResult: ListResult;
@@ -29,7 +32,7 @@ export class ItemListComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private swapiService: SwapiService,
+    private swapiService: SwapiService
   ) {}
 
   ngOnInit() {
@@ -52,5 +55,13 @@ export class ItemListComponent implements OnInit {
     const itemDetail = item as ItemDetail;
     const id = /(\d+)\//g.exec(itemDetail.url)[1];
     return `/${this.category}/${id}`;
+  }
+
+  showImageUrl(item: any) {
+    const itemDetail = item as ItemDetail;
+    const id = /(\d+)\//g.exec(itemDetail.url)[1];
+    return `https://starwars-visualguide.com/assets/img/${
+      this.category === 'people' ? 'characters' : this.category
+    }/${id}.jpg`;
   }
 }

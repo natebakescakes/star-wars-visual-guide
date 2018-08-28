@@ -44,7 +44,8 @@
     Surface Water
   </mat-card-title>
   <mat-card-content>
-    {{item?.surface_water}}%
+    <span *ngIf="item?.surface_water === 'unknown'">{{item?.surface_water | titlecase}}</span>
+    <span *ngIf="item?.surface_water !== 'unknown'">{{item?.surface_water | number: '.'}}%</span>
   </mat-card-content>
 </mat-card>
 <mat-card>
