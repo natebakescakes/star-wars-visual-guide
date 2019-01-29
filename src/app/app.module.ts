@@ -6,6 +6,8 @@ import { StarWarsModule } from './star-wars/star-wars.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { PageNotFoundComponent } from './shared/components/page-not-found.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -13,7 +15,8 @@ import { PageNotFoundComponent } from './shared/components/page-not-found.compon
     BrowserModule,
     StarWarsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   bootstrap: [AppComponent]
 })
