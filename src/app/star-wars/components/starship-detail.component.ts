@@ -3,19 +3,24 @@ import { ItemDetailComponent } from './item-detail.component';
 import { SwapiService } from '../../services/swapi.service';
 import { ActivatedRoute } from '@angular/router';
 import { Starship } from '../../models/Starship';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-starship-detail',
   templateUrl: 'starship-detail.component.html',
-  styleUrls: ['item-detail.component.css'],
+  styleUrls: ['item-detail.component.css']
 })
 export class StarshipDetailComponent extends ItemDetailComponent
   implements OnInit {
   pilots: any[];
   films: any[];
 
-  constructor(swapiService: SwapiService, activatedRoute: ActivatedRoute) {
-    super(swapiService, activatedRoute);
+  constructor(
+    swapiService: SwapiService,
+    commentService: CommentService,
+    activatedRoute: ActivatedRoute
+  ) {
+    super(swapiService, commentService, activatedRoute);
   }
 
   ngOnInit() {

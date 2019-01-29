@@ -1,4 +1,6 @@
-export interface Film {
+import { ItemDetail } from './ItemDetail';
+
+export interface Film extends ItemDetail {
   episode_id: number;
   vehicles: string[];
   species: string[];

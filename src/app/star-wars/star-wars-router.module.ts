@@ -5,16 +5,18 @@ import { PageNotFoundComponent } from '../shared/components/page-not-found.compo
 import { CategoryComponent } from './components/category.component';
 import { ItemDetailComponent } from './components/item-detail.component';
 import { ItemListComponent } from './components/item-list.component';
+import { CommentComponent } from './components/comment.component';
 
 const routes: Routes = [
   { path: '', component: CategoryComponent },
   { path: ':category', component: ItemListComponent },
   { path: ':category/:id', component: ItemDetailComponent },
-  { path: '**', component: PageNotFoundComponent },
+  { path: ':category/:id/comments', component: CommentComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class StarWarsRouterModule {}

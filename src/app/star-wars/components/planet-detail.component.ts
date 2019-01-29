@@ -3,19 +3,24 @@ import { ItemDetailComponent } from './item-detail.component';
 import { SwapiService } from '../../services/swapi.service';
 import { ActivatedRoute } from '@angular/router';
 import { Planet } from '../../models/Planet';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-planet-detail',
   templateUrl: 'planet-detail.component.html',
-  styleUrls: ['item-detail.component.css'],
+  styleUrls: ['item-detail.component.css']
 })
 export class PlanetDetailComponent extends ItemDetailComponent
   implements OnInit {
   films: any[];
   residents: any[];
 
-  constructor(swapiService: SwapiService, activatedRoute: ActivatedRoute) {
-    super(swapiService, activatedRoute);
+  constructor(
+    swapiService: SwapiService,
+    commentService: CommentService,
+    activatedRoute: ActivatedRoute
+  ) {
+    super(swapiService, commentService, activatedRoute);
   }
 
   ngOnInit() {
@@ -28,7 +33,7 @@ export class PlanetDetailComponent extends ItemDetailComponent
         const planet = result as Planet;
         this.films = planet.films.map(f => this.getReferencesFromUrl(f));
         this.residents = planet.residents.map(c =>
-          this.getReferencesFromUrl(c),
+          this.getReferencesFromUrl(c)
         );
       });
   }

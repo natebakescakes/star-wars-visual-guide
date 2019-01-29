@@ -3,36 +3,67 @@ import { ActivatedRoute } from '@angular/router';
 import { SwapiService } from '../../services/swapi.service';
 import { Film } from '../../models/Film';
 import { NonFilmDetail } from '../../models/ItemDetail';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-item-detail',
   template: `
-  <mat-toolbar color="primary">
-    <a mat-icon-button href="/{{category}}"><mat-icon>chevron_left</mat-icon></a>
-    <span>&nbsp;</span>
-    {{showName()}}
-  </mat-toolbar>
-  <div class="container" fxLayout="column wrap" fxLayoutGap="10px">
-    <mat-card>
-      <img mat-card-image [src]="showImageUrl()">
-    </mat-card>
-    <app-person-detail fxLayout="column wrap" fxLayoutGap="10px" *ngIf="category === 'characters'"></app-person-detail>
-    <app-film-detail fxLayout="column wrap" fxLayoutGap="10px" *ngIf="category === 'films'"></app-film-detail>
-    <app-starship-detail fxLayout="column wrap" fxLayoutGap="10px" *ngIf="category === 'starships'"></app-starship-detail>
-    <app-vehicle-detail fxLayout="column wrap" fxLayoutGap="10px" *ngIf="category === 'vehicles'"></app-vehicle-detail>
-    <app-planet-detail fxLayout="column wrap" fxLayoutGap="10px" *ngIf="category === 'planets'"></app-planet-detail>
-    <app-species-detail fxLayout="column wrap" fxLayoutGap="10px" *ngIf="category === 'species'"></app-species-detail>
-  </div>
-  `,
+    <mat-toolbar color="primary">
+      <a mat-icon-button href="/{{ category }}"
+        ><mat-icon>chevron_left</mat-icon></a
+      >
+      <span>&nbsp;</span> {{ showName() }}
+      <span style="flex: 1 1 auto;">&nbsp;</span> {{ commentCount }}
+      <span>&nbsp;</span>
+      <a mat-icon-button href="/{{ category }}/{{ id }}/comments"
+        ><mat-icon>comments</mat-icon></a
+      >
+    </mat-toolbar>
+    <div class="container" fxLayout="column wrap" fxLayoutGap="10px">
+      <mat-card> <img mat-card-image [src]="showImageUrl()" /> </mat-card>
+      <app-person-detail
+        fxLayout="column wrap"
+        fxLayoutGap="10px"
+        *ngIf="category === 'characters'"
+      ></app-person-detail>
+      <app-film-detail
+        fxLayout="column wrap"
+        fxLayoutGap="10px"
+        *ngIf="category === 'films'"
+      ></app-film-detail>
+      <app-starship-detail
+        fxLayout="column wrap"
+        fxLayoutGap="10px"
+        *ngIf="category === 'starships'"
+      ></app-starship-detail>
+      <app-vehicle-detail
+        fxLayout="column wrap"
+        fxLayoutGap="10px"
+        *ngIf="category === 'vehicles'"
+      ></app-vehicle-detail>
+      <app-planet-detail
+        fxLayout="column wrap"
+        fxLayoutGap="10px"
+        *ngIf="category === 'planets'"
+      ></app-planet-detail>
+      <app-species-detail
+        fxLayout="column wrap"
+        fxLayoutGap="10px"
+        *ngIf="category === 'species'"
+      ></app-species-detail>
+    </div>
+  `
 })
 export class ItemDetailComponent implements OnInit {
   category: string;
   item: any;
   id: string;
+  commentCount: number;
 
   constructor(
     protected swapiService: SwapiService,
-    protected activatedRoute: ActivatedRoute,
+    protected commentService: CommentService,
+    protected activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -43,6 +74,9 @@ export class ItemDetailComponent implements OnInit {
       .subscribe(result => {
         this.item = result;
       });
+    this.commentService
+      .countComments(this.category, this.id)
+      .then(result => (this.commentCount = result));
   }
 
   showImageUrl() {

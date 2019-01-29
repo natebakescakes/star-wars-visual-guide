@@ -13,8 +13,8 @@ import { PageNotFoundComponent } from './shared/components/page-not-found.compon
     BrowserModule,
     StarWarsModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    MaterialModule
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

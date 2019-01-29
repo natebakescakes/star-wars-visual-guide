@@ -7,27 +7,24 @@ import { SwapiService } from '../../services/swapi.service';
 @Component({
   selector: 'app-item-list',
   template: `
-  <mat-toolbar color="primary">
-    <a mat-icon-button href="/"><mat-icon>chevron_left</mat-icon></a>
-    <span>&nbsp;</span>
-    {{category | titlecase}}
-  </mat-toolbar>
-  <div class="container" fxLayout="column wrap" fxLayoutGap="10px">
-    <a href="{{showLink(i)}}" *ngFor="let i of fullList">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            {{showName(i)}}
-          </mat-card-title>
-          <img mat-card-avatar [src]="showImageUrl(i)">
-        </mat-card-header>
+    <mat-toolbar color="primary">
+      <a mat-icon-button href="/"><mat-icon>chevron_left</mat-icon></a>
+      <span>&nbsp;</span> {{ category | titlecase }}
+    </mat-toolbar>
+    <div class="container" fxLayout="column wrap" fxLayoutGap="10px">
+      <a href="{{ showLink(i) }}" *ngFor="let i of fullList">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title> {{ showName(i) }} </mat-card-title>
+            <img mat-card-avatar [src]="showImageUrl(i)" />
+          </mat-card-header>
+        </mat-card>
+      </a>
+      <mat-card *ngIf="loading" id="loading-card">
+        <p><mat-spinner></mat-spinner></p>
+        <p>Loading more...</p>
       </mat-card>
-    </a>
-    <mat-card *ngIf="loading" id="loading-card">
-      <p><mat-spinner></mat-spinner></p>
-      <p>Loading more...</p>
-    </mat-card>
-  </div>
+    </div>
   `,
   styles: ['']
 })

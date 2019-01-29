@@ -3,11 +3,12 @@ import { ItemDetailComponent } from './item-detail.component';
 import { SwapiService } from '../../services/swapi.service';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../../models/Person';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-person-detail',
   templateUrl: 'person-detail.component.html',
-  styleUrls: ['item-detail.component.css'],
+  styleUrls: ['item-detail.component.css']
 })
 export class PersonDetailComponent extends ItemDetailComponent
   implements OnInit {
@@ -17,8 +18,12 @@ export class PersonDetailComponent extends ItemDetailComponent
   films: any[];
   homeworld: any;
 
-  constructor(swapiService: SwapiService, activatedRoute: ActivatedRoute) {
-    super(swapiService, activatedRoute);
+  constructor(
+    swapiService: SwapiService,
+    commentService: CommentService,
+    activatedRoute: ActivatedRoute
+  ) {
+    super(swapiService, commentService, activatedRoute);
   }
 
   ngOnInit() {
@@ -33,7 +38,7 @@ export class PersonDetailComponent extends ItemDetailComponent
         this.species = person.species.map(s => this.getReferencesFromUrl(s));
         this.films = person.films.map(f => this.getReferencesFromUrl(f));
         this.starships = person.starships.map(s =>
-          this.getReferencesFromUrl(s),
+          this.getReferencesFromUrl(s)
         );
         this.homeworld = this.getReferencesFromUrl(person.homeworld);
       });

@@ -14,6 +14,8 @@ import { StarshipDetailComponent } from './components/starship-detail.component'
 import { VehicleDetailComponent } from './components/vehicle-detail.component';
 import { StarWarsRouterModule } from './star-wars-router.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommentComponent } from './components/comment.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     StarWarsRouterModule,
     HttpClientModule,
     FlexLayoutModule,
+    FormsModule
   ],
   declarations: [
     CategoryComponent,
@@ -34,7 +37,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     VehicleDetailComponent,
     StarshipDetailComponent,
     SpeciesDetailComponent,
+    CommentComponent
   ],
-  exports: [StarWarsHomeComponent],
+  exports: [StarWarsHomeComponent]
 })
 export class StarWarsModule {}
