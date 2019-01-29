@@ -1,121 +1,89 @@
 <mat-card>
-  <mat-card-title>
-    Episode No.
-  </mat-card-title>
+  <mat-card-title> Episode No. </mat-card-title>
+  <mat-card-content> {{ item?.episode_id }} </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title> Title </mat-card-title>
+  <mat-card-content> {{ item?.title }} </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title> Director </mat-card-title>
+  <mat-card-content> {{ item?.director }} </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title> Producer </mat-card-title>
+  <mat-card-content> {{ item?.producer }} </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title> Release Date </mat-card-title>
   <mat-card-content>
-    {{item?.episode_id}}
+    {{ item?.release_date | date: 'fullDate' }}
   </mat-card-content>
 </mat-card>
 <mat-card>
-  <mat-card-title>
-    Title
-  </mat-card-title>
-  <mat-card-content>
-    {{item?.title}}
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-title>
-    Director
-  </mat-card-title>
-  <mat-card-content>
-    {{item?.director}}
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-title>
-    Producer
-  </mat-card-title>
-  <mat-card-content>
-    {{item?.producer}}
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-title>
-    Release Date
-  </mat-card-title>
-  <mat-card-content>
-    {{item?.release_date | date : fullDate}}
-  </mat-card-content>
-</mat-card>
-<mat-card>
-  <mat-card-title>
-    Opening Crawl
-  </mat-card-title>
-  <mat-card-content>
-    {{item?.opening_crawl}}
-  </mat-card-content>
+  <mat-card-title> Opening Crawl </mat-card-title>
+  <mat-card-content> {{ item?.opening_crawl }} </mat-card-content>
 </mat-card>
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    Related Vehicles
-  </mat-expansion-panel-header>
+  <mat-expansion-panel-header> Related Vehicles </mat-expansion-panel-header>
   <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
-    <a *ngFor="let v of vehicles" href="{{v.url}}">
+    <a *ngFor="let v of vehicles" href="{{ v.url }}">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{v.name}}</mat-card-title>
-          <img mat-card-avatar [src]="v.imageUrl">
+          <mat-card-title>{{ v.name }}</mat-card-title>
+          <img mat-card-avatar [src]="v.imageUrl" />
         </mat-card-header>
       </mat-card>
     </a>
   </mat-card-content>
 </mat-expansion-panel>
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    Related Species
-  </mat-expansion-panel-header>
+  <mat-expansion-panel-header> Related Species </mat-expansion-panel-header>
   <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
-    <a *ngFor="let s of species" href="{{s.url}}">
+    <a *ngFor="let s of species" href="{{ s.url }}">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{s.name}}</mat-card-title>
-          <img mat-card-avatar [src]="s.imageUrl">
+          <mat-card-title>{{ s.name }}</mat-card-title>
+          <img mat-card-avatar [src]="s.imageUrl" />
         </mat-card-header>
       </mat-card>
     </a>
   </mat-card-content>
 </mat-expansion-panel>
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    Related Planets
-  </mat-expansion-panel-header>
+  <mat-expansion-panel-header> Related Planets </mat-expansion-panel-header>
   <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
-    <a *ngFor="let p of planets" href="{{p.url}}">
+    <a *ngFor="let p of planets" href="{{ p.url }}">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{p.name}}</mat-card-title>
-          <img mat-card-avatar [src]="p.imageUrl">
+          <mat-card-title>{{ p.name }}</mat-card-title>
+          <img mat-card-avatar [src]="p.imageUrl" />
         </mat-card-header>
       </mat-card>
     </a>
   </mat-card-content>
 </mat-expansion-panel>
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    Related Characters
-  </mat-expansion-panel-header>
+  <mat-expansion-panel-header> Related Characters </mat-expansion-panel-header>
   <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
-    <a *ngFor="let c of characters" href="{{c.url}}">
+    <a *ngFor="let c of characters" href="{{ c.url }}">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{c.name}}</mat-card-title>
-          <img mat-card-avatar [src]="c.imageUrl">
+          <mat-card-title>{{ c.name }}</mat-card-title>
+          <img mat-card-avatar [src]="c.imageUrl" />
         </mat-card-header>
       </mat-card>
     </a>
   </mat-card-content>
 </mat-expansion-panel>
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    Related Starships
-  </mat-expansion-panel-header>
+  <mat-expansion-panel-header> Related Starships </mat-expansion-panel-header>
   <mat-card-content fxLayout="column wrap" fxLayoutGap="10px">
-    <a *ngFor="let s of starships" href="{{s.url}}">
+    <a *ngFor="let s of starships" href="{{ s.url }}">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{s.name}}</mat-card-title>
-          <img mat-card-avatar [src]="s.imageUrl">
+          <mat-card-title>{{ s.name }}</mat-card-title>
+          <img mat-card-avatar [src]="s.imageUrl" />
         </mat-card-header>
       </mat-card>
     </a>
