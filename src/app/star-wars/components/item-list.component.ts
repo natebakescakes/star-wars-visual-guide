@@ -63,7 +63,7 @@ export class ItemListComponent implements OnInit {
   showLink(item: any) {
     const itemDetail = item as ItemDetail;
     const id = /(\d+)\//g.exec(itemDetail.url)[1];
-    return `/${this.category}/${id}`;
+    return `${this.category}/${id}`;
   }
 
   showImageUrl(item: any) {
