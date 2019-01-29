@@ -8,7 +8,7 @@ import { SwapiService } from '../../services/swapi.service';
   selector: 'app-item-list',
   template: `
     <mat-toolbar color="primary">
-      <a mat-icon-button href="/"><mat-icon>chevron_left</mat-icon></a>
+      <a mat-icon-button href=""><mat-icon>chevron_left</mat-icon></a>
       <span>&nbsp;</span> {{ category | titlecase }}
     </mat-toolbar>
     <div class="container" fxLayout="column wrap" fxLayoutGap="10px">

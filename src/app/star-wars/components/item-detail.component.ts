@@ -9,13 +9,13 @@ import { CommentService } from 'src/app/services/comment.service';
   selector: 'app-item-detail',
   template: `
     <mat-toolbar color="primary">
-      <a mat-icon-button href="/{{ category }}"
+      <a mat-icon-button href="{{ category }}"
         ><mat-icon>chevron_left</mat-icon></a
       >
       <span>&nbsp;</span> {{ showName() }}
       <span style="flex: 1 1 auto;">&nbsp;</span> {{ commentCount }}
       <span>&nbsp;</span>
-      <a mat-icon-button href="/{{ category }}/{{ id }}/comments"
+      <a mat-icon-button href="{{ category }}/{{ id }}/comments"
         ><mat-icon>comments</mat-icon></a
       >
     </mat-toolbar>
